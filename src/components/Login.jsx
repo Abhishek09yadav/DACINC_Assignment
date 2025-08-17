@@ -4,7 +4,7 @@ import { handleLogin } from "@/api/common";
 import axios from "axios";
 
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BsSendFill } from "react-icons/bs";
 const Login = () => {
@@ -13,7 +13,12 @@ const Login = () => {
     password: "",
   });
   const router = useRouter();
-
+  useEffect(() => {
+    const storedToken = localStorage.getItem("DACINC_AUTH_TOKEN");
+    if (storedToken) {
+      router.push("/dashboard");
+    }
+  }, [router]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -77,7 +82,7 @@ const Login = () => {
           />
         </div>
         <button
-          className="relative p-3 w-48 h-12 group shadow-md rounded-md text-black text-center cursor-pointer mt-6 "
+          className="relative p-3 w-full h-12 group shadow-md rounded-md text-black text-center cursor-pointer mt-6 "
           type="submit"
         >
           <span className="absolute inset-0 rounded-sm flex items-center justify-center  text-white bg-customColor transform transition-all duration-300 ease-in-out w-[30px] group-hover:w-full h-full ">
