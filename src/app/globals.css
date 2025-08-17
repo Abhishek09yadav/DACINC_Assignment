@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
+  --color-customColor: oklch(62.7% 0.265 303.9);
+  --color-customColorLight: oklch(0.7709 0.1276 303.9);
+  --color-customColorDark: oklch(43.8% 0.218 303.724);
+}
+@layer components {
+  .btn {
+    @apply px-4 py-2 font-semibold rounded-md transition;
+    --tw-bg-opacity: 1;
+    background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+    color: white;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    @apply bg-blue-600;
+    scale: 1.05;
+  }
+  .btn-secondary {
+    @apply bg-gray-600 text-white;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
