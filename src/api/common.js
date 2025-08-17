@@ -1,5 +1,7 @@
 // Auth
 
+import axiosClient from "./axiosClient";
+
 export const handleLogin = (formData) =>
   axiosClient
     .post("/login", formData, {
@@ -8,14 +10,11 @@ export const handleLogin = (formData) =>
       },
     })
     .then((data) => {
-      toast.success("welcome back");
-      console.log(data);
-      if (data?.data?.token) {
-        localStorage.setItem("DACINC_AUTH_TOKEN", data?.data?.token);
-      }
+      return data;
+      // console.log(data);
     })
     .catch((err) => {
-      toast.error(err?.response?.data?.error);
-      console.log(err);
-      throw err
+      // toast.error(err?.response?.data?.error);
+      // console.log(err);
+      throw err;
     });
