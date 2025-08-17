@@ -1,6 +1,11 @@
 "use client";
+import axiosClient from "@/api/axiosClient";
+import { handleLogin } from "@/api/common";
+import axios from "axios";
+
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { BsSendFill } from "react-icons/bs";
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +16,12 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    try{
+      handleLogin(formData);
+    }
+    catch(error){
+      console.log("error during login",error)
+    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,13 +33,15 @@ const Login = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1 className="text-4xl text-cus font-bold text-center text-customColor mt-5">Login</h1>
+      <h1 className="text-4xl text-cus font-bold text-center text-customColor mt-5">
+        Login
+      </h1>
       <form
         onSubmit={handleSubmit}
         className="p-4 m-3 shadow-md shadow-blue-200 "
       >
         <div className="flex flex-col max-w-5xl gap-1 my-3">
-          <label for="email" className="font-semibold">
+          <label htmlFor="email" className="font-semibold">
             Email
           </label>
           <input
@@ -41,7 +54,7 @@ const Login = () => {
           />
         </div>
         <div className="flex flex-col max-w-5xl gap-1 my-3">
-          <label for="password" className="font-semibold">
+          <label htmlFor="password" className="font-semibold">
             Password
           </label>
           <input
@@ -53,7 +66,10 @@ const Login = () => {
             className=" border  rounded-md border-customColor outline-none caret-customColor focus:ring-2 focus:ring-customColorDark"
           />
         </div>
-        <button className="relative p-3 w-48 h-12 group shadow-md rounded-md text-black text-center cursor-pointer">
+        <button
+          className="relative p-3 w-48 h-12 group shadow-md rounded-md text-black text-center cursor-pointer"
+          type="submit"
+        >
           <span className="absolute inset-0 rounded-sm flex items-center justify-center  text-white bg-customColor transform transition-all duration-300 ease-in-out w-[30px] group-hover:w-full h-full ">
             <BsSendFill className="group-hover:translate-x-16 group-hover:animate-bounce " />
           </span>
