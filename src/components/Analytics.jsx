@@ -2,6 +2,8 @@
 import { fetchTodos } from "@/api/common";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { PiSpinnerLight } from "react-icons/pi";
+
 import {
   Pie,
   PieChart,
@@ -36,6 +38,7 @@ const Analytics = () => {
       setLoading(false);
     }
   };
+
   const completedTodos = todos.filter((t) => t.completed).length;
   const pendingTodos = todos.filter((t) => !t.completed).length;
   const pieChartData = [
@@ -44,6 +47,31 @@ const Analytics = () => {
   ];
 
   const COLORS = ["#10B981", "#EF4444"];
+
+  const todoUsers = todos.reduce((acc, todo) => {
+    if (!acc[todo.userId]) {
+      acc[todo.userId] = {
+        userId: todo.userId,
+        completed: 0,
+        pending: 0,
+      };
+    }
+    if (todo.completed) {
+      acc[todo.userId].completed += 1;
+    } else {
+      acc[todo.userId].pending += 1;
+    }
+    return acc;
+  }, {});
+  const barChartData = Object.values(todoUsers);
+
+  if (loading || todos.length === 0) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <PiSpinnerLight className="text-5xl animate-spin text-green-500" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-emerald-50 flex flex-col  items-center">
@@ -79,7 +107,7 @@ const Analytics = () => {
                   ))}
                 </Pie>
                 <Tooltip />
-                <Legend/>
+                <Legend />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -89,7 +117,29 @@ const Analytics = () => {
           <h2 className="text-xl text-green-700 font-semibold mb-6 text-center">
             Number of Todos per User
           </h2>
-          <div className="min-h-80"></div>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                width={500}
+                height={300}
+                data={barChartData}
+                margin={{
+                  top: 20,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="userId" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="completed" stackId="a" fill="#10B981" />
+                <Bar dataKey="pending" stackId="a" fill="#EF4444" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
     </div>
