@@ -17,9 +17,9 @@ const Page = () => {
         </button>
         <button
           className="btn btn-primary py-4 px-6"
-          onClick={() => router.push("/dashboard")}
+          onClick={() => router.push("/analytics")}
         >
-          Dashboard
+        Analytics  Dashboard
         </button>
       </div>
     </div>

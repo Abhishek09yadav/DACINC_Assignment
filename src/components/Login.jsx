@@ -23,8 +23,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const data = await handleLogin(formData);
-      if (data?.data?.token) {
-        localStorage.setItem("DACINC_AUTH_TOKEN", data?.data?.token);
+      if (data?.token) {
+        localStorage.setItem("DACINC_AUTH_TOKEN", data?.token);
       }
       console.log("login success", data);
 
