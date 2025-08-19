@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DACINC Assignment – Next.js App
 
-## Getting Started
+This is a **Next.js full-stack application** that implements authentication, a user dashboard, and an analytics dashboard using external APIs.
 
-First, run the development server:
+## 🚀 Features
+
+* **Login Page**: Users can log in with email & password using [Reqres API](https://reqres.in/).
+* **Dashboard**: Displays a personalized welcome screen with logout functionality.
+* **Analytics Dashboard**:
+
+  * Pie chart showing **Completed vs Pending Tasks**.
+  * Bar chart showing **Number of Todos per User** using [JSONPlaceholder API](https://jsonplaceholder.typicode.com/todos).
+* **Protected Routes**: Dashboard requires authentication.
+* **Persistent Auth**: JWT-like token stored in `localStorage`.
+* **Responsive UI** with TailwindCSS & modern styling.
+
+---
+
+## 🖼️ Screenshots
+
+### 🔑 Login Page
+
+![Login](/img/login.png)
+
+### 🏠 Dashboard
+
+![Dashboard](/img/dashboard.png)
+
+### 📊 Analytics Dashboard
+
+![Analytics](/img/analytics.png)
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend**: Next.js 15, React 19, TailwindCSS 4
+* **Charts**: Recharts
+* **API Requests**: Axios
+* **UI Enhancements**: React Hot Toast, React Icons
+
+---
+
+## ⚙️ Installation & Setup
+
+Clone the repo:
+
+```bash
+git clone https://github.com/your-username/dacinc-assignment.git
+cd dacinc-assignment
+```
+
+Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App will run at **[http://localhost:3000](http://localhost:3000)**.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔐 Authentication
 
-## Learn More
+* Uses **Reqres API** for login.
+* Successful login stores token in `localStorage` → redirects to `/dashboard`.
+* Logout clears token and redirects to login page.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📊 Analytics
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Fetches todos from JSONPlaceholder API.
+* Visualizes data with:
 
-## Deploy on Vercel
+  * **Pie Chart** → Task Completion Ratio.
+  * **Bar Chart** → Todos per User.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Project Structure
+
+```
+src/
+ ├── api/              # Axios client & API methods
+ ├── app/              # Next.js app router pages
+ │   ├── login/        # Login page
+ │   ├── dashboard/    # Dashboard page
+ │   └── analytics/    # Analytics page
+ └── components/       # Reusable components
+```
+
+---
+
+## 🚀 Deployment
+
+Easily deploy with [Vercel](https://vercel.com/):
+
+```bash
+vercel deploy
+```
+
+---
+
+## 👨‍💻 Author
+
+**Abhishek Yadav**
+
+* Portfolio: [devabhishekyadav.in](https://www.devabhishekyadav.in/)
+* GitHub: [Abhishek09yadav](https://github.com/Abhishek09yadav)
+* LinkedIn: [abhishek-yadav007](https://www.linkedin.com/in/abhishek-yadav007)
+
+---
+
+✨ A clean Next.js app demonstrating **authentication, protected routes, and analytics dashboards**.
+
+---
+
