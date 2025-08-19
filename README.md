@@ -20,15 +20,15 @@ This is a **Next.js full-stack application** that implements authentication, a u
 
 ### 🔑 Login Page
 
-![Login](/img/login.png)
+![Login](/public/img/login.png)
 
 ### 🏠 Dashboard
 
-![Dashboard](/img/dashboard.png)
+![Dashboard](/public/img/dashboard.png)
 
 ### 📊 Analytics Dashboard
 
-![Analytics](/img/analytics.png)
+![Analytics](/public/img/analytics.png)
 
 ---
 
@@ -101,14 +101,9 @@ src/
 ---
 
 ## 🚀 Deployment
+View the deployed application: https://dacinc-assignment.vercel.app
 
-Easily deploy with [Vercel](https://vercel.com/):
-
-```bash
-vercel deploy
-```
-
----
+Deploy your own version with Vercel : https://vercel.com
 
 ## 👨‍💻 Author
 
